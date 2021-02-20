@@ -22,6 +22,16 @@ namespace lab2
                 this.grades = grades;
                 this.isContract = isContract;
             }
+
+            public float GetAverage()
+            {
+                int total = 0;
+                foreach (int grade in grades)
+                {
+                    total += grade;
+                }
+                return (float) total / grades.Length;
+            }
         }
     }
 }
