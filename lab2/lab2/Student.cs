@@ -55,5 +55,27 @@ namespace lab2
             }
             return (float)total / grades.Length;
         }
+
+        public override string ToString()
+        {
+            string result = name + ",";
+            foreach(int grade in grades)
+            {
+                result += $"{grade},";
+            }
+            result += isContract ? "TRUE" : "FALSE";
+            return result;
+        }
+
+        // returns a table of student string records separated by newline
+        public static string ListToTable(List<Student> students)
+        {
+            string result = "";
+            foreach(Student student in students)
+            {
+                result += student + "\n";
+            }
+            return result;
+        }
     }
 }
