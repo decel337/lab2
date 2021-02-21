@@ -9,25 +9,37 @@ namespace lab2
 
     public static class RatingCalculator
     {
-        public static void SortStudentsForRating(ref List<Student> students)
+        public static List<Student> CompileRating(List<Student> students, int percentage)
         {
-            MergeStudentUtility.MergeSortStudents(ref students, 0, students.Count - 1);
+            SortStudentsForRating(students);
+            int lastIn = (int) Math.Floor(students.Count * percentage / 100f);
+            List<Student> result = new List<Student>();
+            for (int i = 0; i < lastIn; i++)
+            {
+                result.Add(students[i]);
+            }
+            return result;
+        }
+
+        private static void SortStudentsForRating(List<Student> students)
+        {
+            MergeStudentUtility.MergeSortStudents(students, 0, students.Count - 1);
         }
 
         private static class MergeStudentUtility
         {
 
-            public static void MergeSortStudents(ref List<Student> students, int l, int r)
+            public static void MergeSortStudents(List<Student> students, int l, int r)
             {
                 if (r > l)
                 {
                     int m = (l + r) / 2;
-                    MergeSortStudents(ref students, l, m);
-                    MergeSortStudents(ref students, m + 1, r);
-                    MergeStudents(ref students, l, m, r);
+                    MergeSortStudents(students, l, m);
+                    MergeSortStudents(students, m + 1, r);
+                    MergeStudents(students, l, m, r);
                 }
             }
-            private static void MergeStudents(ref List<Student> students, int l, int m, int r)
+            private static void MergeStudents(List<Student> students, int l, int m, int r)
             {
                 int i = 0, j = 0, k = l;
                 Student[] L = new Student[m - l + 1];
@@ -46,7 +58,7 @@ namespace lab2
                 // merge into students
                 while (i < L.Length && j < R.Length)
                 {
-                    if ((!L[i].isContract && R[j].isContract) || L[i].GetAverage() > R[j].GetAverage()) // student from L should be higher than from R
+                    if (!(L[i].isContract && !R[j].isContract) && ((!L[i].isContract && R[j].isContract) || L[i].GetAverage() > R[j].GetAverage())) // student from L should be higher than from R
                     {
                         students[k] = L[i];
                         i++;
