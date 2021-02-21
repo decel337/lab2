@@ -7,9 +7,9 @@ namespace lab2.Tests
     public class RatingCalculatorTests
     {
         [TestMethod]
-        public void TestMethod()
+        public void TestSorting()
         {
-
+            string records = "";
         }
     }
 }
