@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+
 namespace lab2
 {
     public class FileWork
@@ -9,18 +11,24 @@ namespace lab2
         {
             List<string> InfoOfStudents = new List<string>();
             DirectoryInfo DirInfo = new DirectoryInfo(path);
-            FileInfo[] files = DirInfo.GetFiles("*.csv");
-
-            foreach (var file in files)
+            if (DirInfo.Exists)
             {
-                using (StreamReader reader = new StreamReader(file.FullName))
+                FileInfo[] files = DirInfo.GetFiles("*.csv");
+                foreach (var file in files)
                 {
-                    reader.ReadLine();
-                    while (!reader.EndOfStream)
+                    using (StreamReader reader = new StreamReader(file.FullName))
                     {
-                        InfoOfStudents.Add(reader.ReadLine());
+                        reader.ReadLine();
+                        while (!reader.EndOfStream)
+                        {
+                            InfoOfStudents.Add(reader.ReadLine());
+                        }
                     }
                 }
+            }
+            else
+            {
+                Console.WriteLine("No path found");
             }
             return InfoOfStudents;
         }
