@@ -58,12 +58,14 @@ namespace lab2
 
         public override string ToString()
         {
-            string result = name + ",";
+            double total = 0;
+            string result = name + ";";
             foreach(int grade in grades)
             {
-                result += $"{grade},";
+                total += grade;
             }
-            result += isContract ? "TRUE" : "FALSE";
+            result += Math.Round(total/grades.Length, 3);
+            //result += isContract ? "TRUE" : "FALSE";
             return result;
         }
 

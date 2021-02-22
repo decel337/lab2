@@ -12,6 +12,12 @@ namespace lab2
             List<string> StudentsInfo = FileWork.ReadFiles(path);
             List<Student> StudentsForRate = Student.GenerateStudentList(StudentsInfo);
             List<Student> ProcessingStudents = RatingCalculator.CompileRating(StudentsForRate, 40);
+            List<string> ProcessStudents = new List<string>();
+            foreach (var student in ProcessingStudents)
+            {
+                ProcessStudents.Add(student.ToString());
+            }
+            FileWork.WriteFile(ProcessStudents, path);
         }
     }
 }
