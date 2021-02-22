@@ -7,7 +7,7 @@ namespace lab2
     {
         public static void Main(string[] args)
         {
-
+            
         }
     }
 }

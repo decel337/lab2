@@ -5,10 +5,10 @@ namespace lab2
 {
     public class FileWork
     {
-        public static List<string> ReadFiles()
+        public static List<string> ReadFiles(string path)
         {
             List<string> InfoOfStudents = new List<string>();
-            DirectoryInfo DirInfo = new DirectoryInfo(@"D:\Новая папка (2)\lab2\lab2\lab2\input");
+            DirectoryInfo DirInfo = new DirectoryInfo(path);
             FileInfo[] files = DirInfo.GetFiles("*.csv");
 
             foreach (var file in files)
@@ -23,6 +23,17 @@ namespace lab2
                 }
             }
             return InfoOfStudents;
+        }
+
+        public static void WriteFile(List<string> ProcInfoStudents, string path)
+        {
+            using (StreamWriter result = new StreamWriter(path + "/result.csv"))
+            {
+                foreach (var student in ProcInfoStudents)
+                {
+                    result.WriteLine(student);
+                }
+            }
         }
     }
 }
