@@ -36,14 +36,16 @@ namespace lab2
 
         public static void WriteFile(List<string> ProcInfoStudents, string path)
         {
-            using (StreamWriter result = new StreamWriter(new FileStream(path + "/rating.csv", FileMode.OpenOrCreate), Encoding.Unicode))
+            using (StreamWriter result = new StreamWriter(new FileStream(path + "/rating.csv", FileMode.OpenOrCreate),
+                Encoding.Unicode))
             {
                 foreach (var student in ProcInfoStudents)
                 {
                     result.WriteLine(student);
                 }
 
-                result.WriteLine("Мінімальний бал для грошей:;"+ProcInfoStudents[ProcInfoStudents.Count - 1].Split(';')[1]);
+                result.WriteLine("Мінімальний бал для грошей:;" +
+                                 ProcInfoStudents[ProcInfoStudents.Count - 1].Split(';')[1]);
             }
         }
     }
