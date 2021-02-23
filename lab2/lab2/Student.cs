@@ -58,25 +58,8 @@ namespace lab2
 
         public override string ToString()
         {
-            double total = 0;
             string result = name + ";";
-            foreach(int grade in grades)
-            {
-                total += grade;
-            }
-            result += Math.Round(total/grades.Length, 3);
-            //result += isContract ? "TRUE" : "FALSE";
-            return result;
-        }
-
-        // returns a table of student string records separated by newline
-        public static string ListToTable(List<Student> students)
-        {
-            string result = "";
-            foreach(Student student in students)
-            {
-                result += student + "\n";
-            }
+            result += Math.Round(GetAverage(), 3);
             return result;
         }
     }
