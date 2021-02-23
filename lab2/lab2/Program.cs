@@ -8,6 +8,7 @@ namespace lab2
     {
         public static void Main(string[] args)
         {
+            Console.WriteLine("Enter path");
             string path = Console.ReadLine();
             List<string> StudentsInfo = FileWork.ReadFiles(path);
             if (StudentsInfo.Count != 0)

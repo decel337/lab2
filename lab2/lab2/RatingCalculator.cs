@@ -12,13 +12,26 @@ namespace lab2
         public static List<Student> CompileRating(List<Student> students, int percentage)
         {
             SortStudentsForRating(students);
-            int lastIn = (int) Math.Floor(students.Count * percentage / 100f);
+            int lastIn = (int) Math.Floor(GetBudgetCount(students) * percentage / 100f);
             List<Student> result = new List<Student>();
             for (int i = 0; i < lastIn; i++)
             {
                 result.Add(students[i]);
             }
             return result;
+        }
+
+        private static int GetBudgetCount(List<Student> students)
+        {
+            int count = 0;
+            foreach(var s in students)
+            {
+                if (!s.isContract)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         private static void SortStudentsForRating(List<Student> students)
