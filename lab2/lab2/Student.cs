@@ -12,16 +12,6 @@ namespace lab2
         private int[] grades;
         public bool isContract { get; private set; }
 
-        // accepts an list of strings in the following format: "Ivanov,78,61,95,87,90,FALSE"
-        public static List<Student> GenerateStudentList(List<string> records)
-        {
-            List<Student> result = new List<Student>();
-            foreach (string record in records)
-            {
-                result.Add(new Student(record));
-            }
-            return result;
-        }
         public Student(string name, int[] grades, bool isContract)
         {
             this.name = name;

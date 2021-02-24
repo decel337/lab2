@@ -14,7 +14,7 @@ namespace lab2
             List<string> StudentsInfo = file.ReadFiles(path);
             if (StudentsInfo.Count != 0)
             {
-                List<Student> StudentsForRate = Student.GenerateStudentList(StudentsInfo);
+                List<Student> StudentsForRate = new StudentFactory().GenerateStudentList(StudentsInfo);
                 List<Student> ProcessingStudents = new RatingCalculator().CompileRating(StudentsForRate, 40);
                 List<string> ProcessStudents = new List<string>();
                 foreach (var student in ProcessingStudents)
