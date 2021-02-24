@@ -10,7 +10,8 @@ namespace lab2
         {
             Console.WriteLine("Enter path");
             string path = Console.ReadLine();
-            List<string> StudentsInfo = FileWork.ReadFiles(path);
+            FileWork file = new FileWork();
+            List<string> StudentsInfo = file.ReadFiles(path);
             if (StudentsInfo.Count != 0)
             {
                 List<Student> StudentsForRate = Student.GenerateStudentList(StudentsInfo);
@@ -21,7 +22,7 @@ namespace lab2
                     ProcessStudents.Add(student.ToString());
                 }
 
-                FileWork.WriteFile(ProcessStudents, path);
+                file.WriteFile(ProcessStudents, path);
             }
             else
             {

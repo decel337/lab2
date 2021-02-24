@@ -8,7 +8,7 @@ namespace lab2
 {
     public class FileWork
     {
-        public static List<string> ReadFiles(string path)
+        public List<string> ReadFiles(string path)
         {
             List<string> InfoOfStudents = new List<string>();
             DirectoryInfo DirInfo = new DirectoryInfo(path);
@@ -34,7 +34,7 @@ namespace lab2
             return InfoOfStudents;
         }
 
-        public static void WriteFile(List<string> ProcInfoStudents, string path)
+        public void WriteFile(List<string> ProcInfoStudents, string path)
         {
             using (StreamWriter result = new StreamWriter(new FileStream(path + "/rating.csv", FileMode.OpenOrCreate),
                 Encoding.Unicode))
