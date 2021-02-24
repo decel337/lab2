@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace lab2
 {
 
-    public static class RatingCalculator
+    public class RatingCalculator
     {
-        public static List<Student> CompileRating(List<Student> students, int percentage)
+        public List<Student> CompileRating(List<Student> students, int percentage)
         {
             SortStudentsForRating(students);
             int lastIn = (int) Math.Floor(GetBudgetCount(students) * percentage / 100f);
@@ -21,7 +21,7 @@ namespace lab2
             return result;
         }
 
-        private static int GetBudgetCount(List<Student> students)
+        private int GetBudgetCount(List<Student> students)
         {
             int count = 0;
             foreach(var s in students)
@@ -34,15 +34,15 @@ namespace lab2
             return count;
         }
 
-        private static void SortStudentsForRating(List<Student> students)
+        private void SortStudentsForRating(List<Student> students)
         {
-            MergeStudentUtility.MergeSortStudents(students, 0, students.Count - 1);
+            new MergeStudentUtility().MergeSortStudents(students, 0, students.Count - 1);
         }
 
-        private static class MergeStudentUtility
+        private class MergeStudentUtility
         {
 
-            public static void MergeSortStudents(List<Student> students, int l, int r)
+            public void MergeSortStudents(List<Student> students, int l, int r)
             {
                 if (r > l)
                 {
@@ -52,7 +52,7 @@ namespace lab2
                     MergeStudents(students, l, m, r);
                 }
             }
-            private static void MergeStudents(List<Student> students, int l, int m, int r)
+            private void MergeStudents(List<Student> students, int l, int m, int r)
             {
                 int i = 0, j = 0, k = l;
                 Student[] L = new Student[m - l + 1];

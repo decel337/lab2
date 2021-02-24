@@ -15,7 +15,7 @@ namespace lab2
             if (StudentsInfo.Count != 0)
             {
                 List<Student> StudentsForRate = Student.GenerateStudentList(StudentsInfo);
-                List<Student> ProcessingStudents = RatingCalculator.CompileRating(StudentsForRate, 40);
+                List<Student> ProcessingStudents = new RatingCalculator().CompileRating(StudentsForRate, 40);
                 List<string> ProcessStudents = new List<string>();
                 foreach (var student in ProcessingStudents)
                 {
